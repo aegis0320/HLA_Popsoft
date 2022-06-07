@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+    <div class="row">
+        <div class="col-4 p-3 bg-whitedark text-dark">.col
+            <!-- start 年份列表 -->
+            <div id="accordion">
+                <div class="card">
+                    <div class="card-header">
+                        <a class="btn" data-bs-toggle="collapse" href="#collapseOne">
+                            2022
+                        </a>
+                    </div>
+                    <div id="collapseOne" class="collapse show" data-bs-parent="#accordion">
+                        <div class="card-body">
+                            <!-- start 期刊列表 -->
+                            <div class="row">
+                                {# start 刊号生成循环语句 #}
+                                <div class="col-4">
+                                    <a href="www.baidu.com">No.1</a>
+                                </div>
+                                <div class="col-4">
+                                    <a href="www.baidu.com">No.2</a>
+                                </div>
+                                {# end 刊号生成循环语句 #}
+                            </div>
+                            <!-- start 期刊列表 -->
+                        </div>
+                    </div>
+                </div>
+                {# start 年份生成循环语句 #}
+                {% for year, month_dict in ma_dict.items() %}
+                    <div class="card">
+                        <div class="card-header">
+                            <a class="collapsed btn" data-bs-toggle="collapse" href={{ "#collapse"+ year }}>
+                                {{ year }}+{{ month_dict }}
+                            </a>
+                        </div>
+                        <div id={{ "collapse"+ year }} class="collapse" data-bs-parent="#accordion">
+                            <div class="card-body">
+                                <!-- start 期刊列表 -->
+                                <div class="row">
+                                    {# start 刊号生成循环语句 #}
+                                    {% for month, ma_list in month_dict.items() %}
+                                        {% for ma_index in ma_list %}
+                                            <div class="col-4">
+                                                <a href="www.baidu.com">{{ month }}+{{ ma_index }}</a>
+                                            </div>
+                                        {% endfor %}
+                                    {% endfor %}
+                                    {# end 刊号生成循环语句 #}
+                                </div>
+                                <!-- start 期刊列表 -->
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+                <div class="card">
+                    <div class="card-header">
+                        <a class="collapsed btn" data-bs-toggle="collapse" href="#collapseTwo">
+                            2023
+                        </a>
+                    </div>
+                    <div id="collapseTwo" class="collapse" data-bs-parent="#accordion">
+                        <div class="card-body">
+                            #2 内容：菜鸟教程 -- 学的不仅是技术，更是梦想！！！
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <a class="collapsed btn" data-bs-toggle="collapse" href="#collapseThree">
+                            2024
+                        </a>
+                    </div>
+                    <div id="collapseThree" class="collapse" data-bs-parent="#accordion">
+                        <div class="card-body">
+                            #3 内容：菜鸟教程 -- 学的不仅是技术，更是梦想！！！
+                        </div>
+                    </div>
+                </div>
+                {# end 年份生成循环语句 #}
+            </div>
+            <!-- end 年份列表 -->
+        </div>
+
+
+        <div class="col-8 p-3 bg-primary text-white">.col
+            <!-- start 目录列表 -->
+            <ul class="list-group">
+                <!-- jquery 生成 -->
+                <li class="list-group-item">An item
+                    <div style="text-align: right">12</div>
+                </li>
+                <li class="list-group-item">A second item</li>
+                <li class="list-group-item">A third item</li>
+                <li class="list-group-item">A fourth item</li>
+                <li class="list-group-item">And a fifth one</li>
+            </ul>
+            <!-- end 目录列表 -->
+        </div>
+    </div>
+
+{% endblock %}
