@@ -45,7 +45,7 @@
                                     {% for month, ma_list in month_dict.items() %}
                                         {% for ma_index in ma_list %}
                                             <div class="col-4">
-                                                <a href="www.baidu.com">{{ month }}+{{ ma_index }}</a>
+                                                <a onclick="showDetail(this)" id="{{ year }}{{ month }}{{ ma_index }}">{{ month }}+{{ ma_index }}</a>
                                             </div>
                                         {% endfor %}
                                     {% endfor %}
@@ -88,15 +88,11 @@
 
         <div class="col-8 p-3 bg-primary text-white">.col
             <!-- start 目录列表 -->
-            <ul class="list-group">
+            <ul class="list-group" id="title_list">
                 <!-- jquery 生成 -->
                 <li class="list-group-item">An item
                     <div style="text-align: right">12</div>
                 </li>
-                <li class="list-group-item">A second item</li>
-                <li class="list-group-item">A third item</li>
-                <li class="list-group-item">A fourth item</li>
-                <li class="list-group-item">And a fifth one</li>
             </ul>
             <!-- end 目录列表 -->
         </div>

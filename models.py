@@ -12,7 +12,7 @@ class Magazine(db.Model):
 
 
 class Article(db.Model):
-    id = db.Column(db.Integer, ForeignKey('magazine.id'), primary_key=True)
+    id_magazine = db.Column(db.Integer, ForeignKey('magazine.id'), primary_key=True)
     index = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.Text)
     pageNum = db.Column(db.Integer)
