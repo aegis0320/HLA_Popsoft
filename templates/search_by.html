@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+    <form method="post">
+        搜索 <input type="text" name="key" autocomplete="off" required>
+        <input class="btn" type="submit" name="submit" value="search">
+    </form>
+
+    <ul class="list-group">
+        {% for result in result_list %}
+            <li class="list-group-item">
+                <div class="row">
+                    <div class="col-8">{{ result[0] }}</div>
+                    <div class="col-3">{{ result[1] }}</div>
+                    <div class="col-1">{{ result[2] }}</div>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}

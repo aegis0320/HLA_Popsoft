@@ -3,38 +3,16 @@
 {% block body %}
 
     <div class="row">
-        <div class="col-4 p-3 bg-whitedark text-dark">.col
+        <div class="col-4 p-3 bg-whitedark text-dark">
             <!-- start 年份列表 -->
             <div id="accordion">
-                <div class="card">
-                    <div class="card-header">
-                        <a class="btn" data-bs-toggle="collapse" href="#collapseOne">
-                            2022
-                        </a>
-                    </div>
-                    <div id="collapseOne" class="collapse show" data-bs-parent="#accordion">
-                        <div class="card-body">
-                            <!-- start 期刊列表 -->
-                            <div class="row">
-                                {# start 刊号生成循环语句 #}
-                                <div class="col-4">
-                                    <a href="www.baidu.com">No.1</a>
-                                </div>
-                                <div class="col-4">
-                                    <a href="www.baidu.com">No.2</a>
-                                </div>
-                                {# end 刊号生成循环语句 #}
-                            </div>
-                            <!-- start 期刊列表 -->
-                        </div>
-                    </div>
-                </div>
                 {# start 年份生成循环语句 #}
                 {% for year, month_dict in ma_dict.items() %}
                     <div class="card">
                         <div class="card-header">
                             <a class="collapsed btn" data-bs-toggle="collapse" href={{ "#collapse"+ year }}>
-                                {{ year }}+{{ month_dict }}
+                                {# 年份 #}
+                                {{ year }}年
                             </a>
                         </div>
                         <div id={{ "collapse"+ year }} class="collapse" data-bs-parent="#accordion">
@@ -45,7 +23,22 @@
                                     {% for month, ma_list in month_dict.items() %}
                                         {% for ma_index in ma_list %}
                                             <div class="col-4">
-                                                <a onclick="showDetail(this)" id="{{ year }}{{ month }}{{ ma_index }}">{{ month }}+{{ ma_index }}</a>
+                                                {% if ma_index == '0' %}
+                                                    <a onclick="showDetail(this)"
+                                                       id="{{ year }}{{ month }}{{ ma_index }}">{{ month }}月刊</a>
+                                                {% elif ma_index == '1' %}
+                                                    <a onclick="showDetail(this)"
+                                                       id="{{ year }}{{ month }}{{ ma_index }}">{{ month }}月上</a>
+                                                {% elif ma_index == '2' %}
+                                                    <a onclick="showDetail(this)"
+                                                       id="{{ year }}{{ month }}{{ ma_index }}">{{ month }}月中</a>
+                                                {% elif ma_index == '3' %}
+                                                    <a onclick="showDetail(this)"
+                                                       id="{{ year }}{{ month }}{{ ma_index }}">{{ month }}月下</a>
+                                                {% else %}
+                                                    <a onclick="showDetail(this)"
+                                                       id="{{ year }}{{ month }}{{ ma_index }}">{{ month }}月刊</a>
+                                                {% endif %}
                                             </div>
                                         {% endfor %}
                                     {% endfor %}
@@ -56,43 +49,16 @@
                         </div>
                     </div>
                 {% endfor %}
-                <div class="card">
-                    <div class="card-header">
-                        <a class="collapsed btn" data-bs-toggle="collapse" href="#collapseTwo">
-                            2023
-                        </a>
-                    </div>
-                    <div id="collapseTwo" class="collapse" data-bs-parent="#accordion">
-                        <div class="card-body">
-                            #2 内容：菜鸟教程 -- 学的不仅是技术，更是梦想！！！
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-header">
-                        <a class="collapsed btn" data-bs-toggle="collapse" href="#collapseThree">
-                            2024
-                        </a>
-                    </div>
-                    <div id="collapseThree" class="collapse" data-bs-parent="#accordion">
-                        <div class="card-body">
-                            #3 内容：菜鸟教程 -- 学的不仅是技术，更是梦想！！！
-                        </div>
-                    </div>
-                </div>
                 {# end 年份生成循环语句 #}
             </div>
             <!-- end 年份列表 -->
         </div>
 
 
-        <div class="col-8 p-3 bg-primary text-white">.col
+        <div class="col-8 p-3 bg-primary text-white">
             <!-- start 目录列表 -->
             <ul class="list-group" id="title_list">
                 <!-- jquery 生成 -->
-                <li class="list-group-item">An item
-                    <div style="text-align: right">12</div>
-                </li>
             </ul>
             <!-- end 目录列表 -->
         </div>

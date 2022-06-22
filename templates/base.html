@@ -8,6 +8,12 @@
     <script src="{{ url_for('static', filename='func.js') }}"></script>
 </head>
 <body>
+<a href="/">
+    <button>主页</button>
+</a>
+<a href="/search/">
+    <button>搜索</button>
+</a>
 {% block body %}
 {% endblock %}
 <script src="{{ url_for('static', filename='bootstrap-5.1.3-dist/js/bootstrap.bundle.js') }}"></script>

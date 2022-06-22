@@ -30,7 +30,7 @@ function showDetail($this){
         $("#title_list").empty()
         for(let i=0, len=data.length; i<len; i++) {
             let pgn=$("<div style=\"text-align: right\"></div>").text(data[i][1])
-            let tit=$("<li className='list-group-item'></li>").text(data[i][0])
+            let tit=$("<li class='list-group-item'></li>").text(data[i][0])
             tit.append(pgn)
             $("#title_list").append(tit)
         }

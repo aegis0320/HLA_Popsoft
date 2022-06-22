@@ -7,7 +7,7 @@ testList = [1, 2, 3]
 
 
 @bp.route("/")
-def login():
+def index():
     print(make_list())
     return render_template("index.html", ma_dict=make_list())
 
@@ -17,7 +17,7 @@ def make_catalogue(cata_id):
     tit_list = []
     at_list = Article.query.filter(Article.id_magazine == cata_id).order_by(Article.index).all()
     for at in at_list:
-        tit_list.append([at.id_magazine, str(at.pageNum)])
+        tit_list.append([at.title, str(at.pageNum)])
     return json.dumps(tit_list)
 
 
