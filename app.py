@@ -24,7 +24,7 @@ app.register_blueprint(user_bp)
 app.register_blueprint(data_bp)
 app.register_blueprint(search_bp)
 
-file_path = 'D:\\Gu\\Desktop\\大软目录'
+file_path = '大软目录'
 
 
 @app.cli.command()
